@@ -1,0 +1,36 @@
+<div class="row">
+    <div class="col">
+        <h3>It is {{getTurnName()}}'s turn.</h3>
+        <h3>Score</h3>
+        <h4>Black: {{getBlackScore()}}</h4>
+        <h4>White: {{getWhiteScore()}}</h4>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-6">
+        <table class="table table-success table-sm">
+            <tbody>
+                <tr *ngFor="let row of board; index as i;">
+                    <td *ngFor="let piece of row; index as j;">
+                        <button type="button" class="btn btn-outline-success" (click)="placePiece(i, j)"
+                            [class]="getPieceClass(piece)" [hover-class]="getTurnClass(piece)"></button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="modal fade" id="winnerModal" tabindex="-1" role="dialog" aria-labelledby="winnerModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-body">
+                Congratulations!!! {{getWinnerText()}}
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" (click)="startOver()">Start Over</button>
+            </div>
+        </div>
+    </div>
+</div>
